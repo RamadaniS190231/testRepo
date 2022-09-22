@@ -1,4 +1,4 @@
-public class EratosthenesPrimeSieve {
+public class EratosthenesPrimeSieve implements PrimeSieve{
 
     private int highestNumber;
 
@@ -6,9 +6,6 @@ public class EratosthenesPrimeSieve {
     this.highestNumber = highestNumber;
     }
 
-    public interface PrimeSieve{
-        public boolean isPrime(int p);
 
-        public void printPrimes();
-    }
+
 }
