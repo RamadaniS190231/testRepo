@@ -8,7 +8,8 @@ public class Main {
         sc.useDelimiter("\n");
         int highestNumber = sc.nextInt();
         sc.close();
-        EratosthenesPrimeSieve eps = new EratosthenesPrimeSieve(highestNumber);
 
+        EratosthenesPrimeSieve eps = new EratosthenesPrimeSieve(highestNumber);
+        eps.printPrimes();
     }
 }
