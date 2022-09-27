@@ -7,13 +7,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
         int highestNumber = sc.nextInt();
-        int[] crossed = new int[highestNumber];
-        
+        sc.close();
         EratosthenesPrimeSieve eps = new EratosthenesPrimeSieve(highestNumber);
 
-
-        for(int i = 2; i == highestNumber; i++){
-
-        }
     }
 }
