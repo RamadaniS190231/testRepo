@@ -3,6 +3,7 @@ import java.util.List;
 
 public class HalloJavamitForEach {
 
+    /*Erstes Beispiel
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         list.add("Noah ");
@@ -15,5 +16,12 @@ public class HalloJavamitForEach {
         list.forEach(System.out::print);
         System.out.println();
 
+    }*/
+
+    //Zweites Beispiel
+
+    public static void main(String[] args) {
+
+        
     }
 }

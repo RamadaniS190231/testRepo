@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class NumberTester {
 
-    //Soll dann in der set Methode etwas auf der Konsole ausgegeben werden?
+
     private NumberTest primeTester;
     private NumberTest oddTester;
     private NumberTest palindromeTester;
