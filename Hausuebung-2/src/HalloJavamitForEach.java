@@ -22,6 +22,54 @@ public class HalloJavamitForEach {
 
     public static void main(String[] args) {
 
-        
+        NumberTest isEven = (number) -> {
+            if (number%2 == 0){
+                return true;
+            }else {
+                return false;
+            }
+        };
+
+        NumberTest isPrime = (number) -> {
+            boolean flag = false;
+            for (int i = 2; i <= number / 2; ++i) {
+
+                if (number % i == 0) {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) {
+                return true;
+            }else{
+
+                    return false;
+            }
+        };
+
+        NumberTest isPalindrome = (number) -> {
+            int r,sum=0,temp;
+
+            temp=number;
+            while(number>0){
+                r=number%10;  //getting remainder
+                sum=(sum*10)+r;
+                number=number/10;
+            }
+            if(temp==sum) {
+                return true;
+            }else {
+                return false;
+            }
+        };
+
+        NumberTester nt = new NumberTester("NumberFile.txt");
+        nt.setOddEvenTester(isEven);
+        nt.setPrimeTester(isPrime);
+        nt.setPalindromeTester(isPalindrome);
+
+        nt.testFile();
+
     }
 }
