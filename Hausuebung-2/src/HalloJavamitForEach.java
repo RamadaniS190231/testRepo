@@ -52,7 +52,7 @@ public class HalloJavamitForEach {
 
             temp=number;
             while(number>0){
-                r=number%10;  
+                r=number%10;
                 sum=(sum*10)+r;
                 number=number/10;
             }
