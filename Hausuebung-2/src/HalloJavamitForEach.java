@@ -43,7 +43,6 @@ public class HalloJavamitForEach {
             if (!flag) {
                 return true;
             }else{
-
                     return false;
             }
         };
@@ -53,7 +52,7 @@ public class HalloJavamitForEach {
 
             temp=number;
             while(number>0){
-                r=number%10;  //getting remainder
+                r=number%10;  
                 sum=(sum*10)+r;
                 number=number/10;
             }
