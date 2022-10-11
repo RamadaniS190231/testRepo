@@ -51,4 +51,26 @@ public class Main {
         wList.sort((Weapon w1, Weapon w2) -> w2.getDamage()-w1.getDamage());
          return wList;
     }
+
+    public ArrayList<Weapon> sortByName(ArrayList<Weapon> wList){
+        wList.sort((Weapon w1, Weapon w2) -> {
+            int result = w2.getDamage()-w1.getDamage();
+            if (result == 0){
+                result = w1.getCombatType().compareTo(w2.getCombatType());
+                return result;
+            }
+            if (result == 0){
+                result = w1.getDamageType().compareTo(w2.getDamageType());
+                return result;
+            }
+            if (result == 0){
+                result = w1.getName().compareTo(w2.getName());
+                return result;
+            }
+            return result;
+        });
+        return wList;
+    }
+
+
 }
