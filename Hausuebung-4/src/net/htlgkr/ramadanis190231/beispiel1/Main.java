@@ -14,11 +14,17 @@ import java.util.stream.Stream;
 public class Main {
     static List<String> stringList = new ArrayList<>();
     static List<Integer> integerList = new ArrayList<>();
-    
+
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        sc.useDelimiter("\n");
         readFile();
         removeStrings();
 
+        System.out.println("Chunks:");
+        int chunks = sc.nextInt();
+        System.out.println("Divider:");
+        int divider = sc.nextInt();
 
     }
 
