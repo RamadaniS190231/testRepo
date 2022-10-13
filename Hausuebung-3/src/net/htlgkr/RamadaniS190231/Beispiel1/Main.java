@@ -3,15 +3,35 @@ package net.htlgkr.RamadaniS190231.Beispiel1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        ArrayList<Weapon> unsortedWList= new ArrayList<>();
+        unsortedWList = readFile();
+        ArrayList<Weapon> sortedList = sortDamage(unsortedWList);
+        Printable printableNormal = (weapons) -> weapons.stream().forEach(System.out::println);
+        printableNormal.print(sortedList);
+
+        System.out.println();System.out.println();System.out.println();System.out.println();
+
+        Printable printT = (weapons) -> {
+            System.out.println("Name           +  CombatType  +  DamageType  +  Damage  +  Speed  +  Strength  +  Value  +");
+            System.out.println("-----------------------------------------------------------------------------------");
+            for (int i = 0; i < weapons.size(); i++){
+                Weapon w = weapons.get(i);
+                System.out.println(w.getName() + "  +    " + w.getCombatType() + "      +   " + w.getDamageType() + "     +     " + w.getDamage() + "     +     " + w.getSpeed() + "    +    " + w.getStrength() + "    +    " + w.getValue() + " + ");
+
+            }
+        };
+        printT.print(sortedList);
+
     }
 
-    public ArrayList<Weapon> readFile(){
+    public static ArrayList<Weapon> readFile(){
         ArrayList<Weapon> wList = new ArrayList<>();
         try {
             File myObj = new File("C:\\Schule\\Shuajb-HTL-3\\POS\\testRepo\\Hausuebung-3\\src\\net\\htlgkr\\RamadaniS190231\\Beispiel1\\weapons.csv");
@@ -47,28 +67,17 @@ public class Main {
         return wList;
     }
 
-    public ArrayList<Weapon> sortDamage(ArrayList<Weapon> wList){
-        wList.sort((Weapon w1, Weapon w2) -> w2.getDamage()-w1.getDamage());
+    public static ArrayList<Weapon> sortDamage(ArrayList<Weapon> wList){
+        wList.sort(Comparator.comparingInt(Weapon::getDamage));
          return wList;
     }
 
-    public ArrayList<Weapon> sortByName(ArrayList<Weapon> wList){
-        wList.sort((Weapon w1, Weapon w2) -> {
-            int result = w2.getDamage()-w1.getDamage();
-            if (result == 0){
-                result = w1.getCombatType().compareTo(w2.getCombatType());
-                return result;
-            }
-            if (result == 0){
-                result = w1.getDamageType().compareTo(w2.getDamageType());
-                return result;
-            }
-            if (result == 0){
-                result = w1.getName().compareTo(w2.getName());
-                return result;
-            }
-            return result;
-        });
+    public static ArrayList<Weapon> sortByDamageAndName(ArrayList<Weapon> wList){
+        Comparator<Weapon> comparator = Comparator
+                .comparing(Weapon::getCombatType)
+                .thenComparing(Weapon::getDamageType)
+                .thenComparing(Weapon::getName);
+        wList.sort(comparator);
         return wList;
     }
 

@@ -21,9 +21,19 @@ public class MainTest {
         wList.add(w3);
         wList.add(w4);
 
-        ArrayList<Weapon> testList = m.sortDamage(wList);
+        ArrayList<Weapon> wList2 = new ArrayList<>();
+        Weapon w12 = new Weapon("Sword", CombatType.MELEE, DamageType.SLASHING, 30, 40, 10, 5);
+        Weapon w22 = new Weapon("Axe", CombatType.MELEE, DamageType.SLASHING, 12, 40, 10, 5);
+        Weapon w32 = new Weapon("Bow", CombatType.RANGED, DamageType.SLASHING, 70, 40, 10, 5);
+        Weapon w42 = new Weapon("Speer", CombatType.MELEE, DamageType.SLASHING, 45, 40, 10, 5);
+        wList2.add(w22);
+        wList2.add(w12);
+        wList2.add(w42);
+        wList2.add(w32);
+
+        wList = m.sortDamage(wList);
         boolean expected = true;
-        boolean result = wList.equals(testList);
+        boolean result = wList.equals(wList2);
         assertEquals(expected, result);
 
     }
@@ -41,7 +51,7 @@ public class MainTest {
         wList.add(w3);
         wList.add(w4);
 
-        ArrayList<Weapon> testList = m.sortByName(wList);
+        ArrayList<Weapon> testList = m.sortByDamageAndName(wList);
         boolean expected = true;
         boolean result = wList.equals(testList);
         assertEquals(expected, result);

@@ -20,6 +20,16 @@ public class Weapon {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return name + " " +
+                 combatType + " "+
+                 damageType + " " +
+                 damage + " " +
+                 speed + " " +
+                 strength + " " +
+                 value;
+    }
 
     public String getName() {
         return name;
