@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
@@ -18,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
         readFile();
         removeStrings();
 
@@ -25,6 +28,21 @@ public class Main {
         int chunks = sc.nextInt();
         System.out.println("Divider:");
         int divider = sc.nextInt();
+        int tasks = integerList.size()/chunks;
+        int from = 0;
+        int to = tasks-1;
+        for (int i = chunks; i > 0; i--) {
+
+            List<Integer> taskList = new ArrayList<>();
+            taskList = integerList.subList(from, to);
+            from =  from + tasks;
+            to = to + tasks;
+            Task t = new Task(taskList, divider);
+            System.out.println("Task created");
+            executor.execute(t);
+        }
+
+        executor.shutdown();
 
     }
 
@@ -34,7 +52,6 @@ public class Main {
             Scanner fileReader = new Scanner(file);
             while (fileReader.hasNext()) {
                 String line = fileReader.nextLine();
-                lines++;
                 String[] splitted = line.split(":");
                 for (int i = 0; i < splitted.length; i++){
                     stringList.add(splitted[i]);
