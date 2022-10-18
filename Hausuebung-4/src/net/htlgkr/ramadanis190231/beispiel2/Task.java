@@ -1,11 +1,9 @@
 package net.htlgkr.ramadanis190231.beispiel2;
 
-import static net.htlgkr.ramadanis190231.beispiel2.Main.sum;
-
 public class Task implements Runnable{
     private int lowest;
     private int highest;
-
+    private int sum;
     public Task(int lowest, int highest) {
         this.lowest = lowest;
         this.highest = highest;
@@ -15,9 +13,13 @@ public class Task implements Runnable{
     public void run() {
         int result = 0;
         for(int i = this.lowest; i <= this.highest; i++){
-            result =+ i;
+            result = result + i;
         }
 
-        sum = sum+result;
+        sum = result;
+    }
+
+    public int getSum() {
+        return sum;
     }
 }
