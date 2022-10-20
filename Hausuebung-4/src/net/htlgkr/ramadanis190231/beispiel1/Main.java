@@ -33,7 +33,7 @@ public class Main {
         int to = tasks-1;
         for (int i = chunks; i > 0; i--) {
 
-            List<Integer> taskList = new ArrayList<>();
+            List<Integer> taskList;
             taskList = integerList.subList(from, to);
             from =  from + tasks;
             to = to + tasks;
