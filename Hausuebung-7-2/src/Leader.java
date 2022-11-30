@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.concurrent.locks.Lock;
 
 public class Leader implements Runnable{
@@ -18,18 +19,23 @@ public class Leader implements Runnable{
 
         while (true){
 
+            LocalDateTime time;
             drinking();
 
             grabRightFork();
-            System.out.println("Leader " + id + " grabbed the right fork.");
-            grabLeftFork();
-            System.out.println("Leader " + id + " grabbed the left fork.");
+            time = LocalDateTime.now();
+            System.out.println(time + " Leader " + id + " grabbed the right fork.");
+            grabLeftFork(); // Methode macht nichts
+            time = LocalDateTime.now();
+            System.out.println(time + " Leader " + id + " grabbed the left fork.");
             feasting();
 
             releaseLeftFork();
-            System.out.println("Leader " + id + " released the left fork.");
+            time = LocalDateTime.now();
+            System.out.println(time + " Leader " + id + " released the left fork.");
             releaseRightFork();
-            System.out.println("Leader " + id + " released the right fork.");
+            time = LocalDateTime.now();
+            System.out.println(time + " Leader " + id + " released the right fork.");
         }
 
     }
@@ -64,7 +70,8 @@ public class Leader implements Runnable{
 
     public void feasting(){
         int i = (int) (Math.random() * 1000) + 1;
-        System.out.println("Leader " + id + " is feasting");
+        LocalDateTime time = LocalDateTime.now();
+        System.out.println(time + " Leader " + id + " is feasting");
         try {
             Thread.sleep(i);
         } catch (InterruptedException e) {
@@ -73,7 +80,8 @@ public class Leader implements Runnable{
     }
     public void drinking(){
         int i = (int) (Math.random() * 1000) + 1;
-        System.out.println("Leader " + id + " is drinking");
+        LocalDateTime time = LocalDateTime.now();
+        System.out.println(time + " Leader " + id + " is drinking");
         try {
             Thread.sleep(i);
         } catch (InterruptedException e) {
